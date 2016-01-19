@@ -15,4 +15,12 @@ module Listable
     dates = 'N/A' unless dates
     dates
   end
+
+  def format_priority(priority)
+    value = ' ⇧' if priority == 'high'
+    value = ' ⇨' if priority == 'medium'
+    value = ' ⇩' if priority == 'low'
+    value = '' unless priority
+    value
+  end
 end
