@@ -23,4 +23,8 @@ module Listable
     value = '' unless priority
     value
   end
+
+  def format_name(name)
+    name ? name : ''
+  end
 end

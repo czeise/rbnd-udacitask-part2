@@ -8,7 +8,9 @@ class TodoItem
   def initialize(description, options = {})
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
+
     return unless options[:priority]
+
     unless %w(high medium low).include?(options[:priority])
       raise UdaciListErrors::InvalidPriorityValue,
             "#{options[:priority]} is not a valid priority."
