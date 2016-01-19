@@ -42,11 +42,14 @@ class UdaciList
   end
 
   def all
-    title_block
+    table = Terminal::Table.new(title: @title, style: { width: 80 })
 
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      row = [position + 1, item.details[0], item.details[1]]
+      table.add_row row
     end
+
+    puts table
   end
 
   def filter(type)
@@ -62,10 +65,13 @@ class UdaciList
             "#{type} is not a valid item type."
     end
 
-    title_block
+    table = Terminal::Table.new(title: @title, style: { width: 80 })
 
     @items.select { |item| item.class == item_class }.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      row = [position + 1, item.details[0], item.details[1]]
+      table.add_row row
     end
+
+    puts table
   end
 end

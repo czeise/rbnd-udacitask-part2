@@ -10,7 +10,7 @@ class EventItem
   end
 
   def details
-    format_description(@description) + 'event dates: ' +
-      format_date(first_date: @start_date, second_date: @end_date)
+    [format_description(@description), 'event dates: ' +
+      format_date(first_date: @start_date, second_date: @end_date)]
   end
 end
