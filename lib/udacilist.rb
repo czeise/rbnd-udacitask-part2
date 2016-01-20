@@ -3,7 +3,7 @@ class UdaciList
   attr_reader :title, :items
 
   def initialize(options = {})
-    @title = options[:title]
+    options[:title] ? @title = options[:title] : @title = 'Untitled List'
     @items = []
   end
 
@@ -41,18 +41,22 @@ class UdaciList
     end
   end
 
-  def all
+  def generate_table(list)
     table = Terminal::Table.new(title: @title, style: { width: 80 })
 
-    @items.each_with_index do |item, position|
+    list.each_with_index do |item, position|
       row = [position + 1, item.item_type, item.details[0], item.details[1]]
       table.add_row row
     end
 
-    puts table
+    table
   end
 
-  def filter(type)
+  def all
+    puts generate_table(@items)
+  end
+
+  def get_item_class(type)
     type = type.downcase
     if type == 'todo'
       item_class = TodoItem
@@ -64,14 +68,24 @@ class UdaciList
       raise UdaciListErrors::InvalidItemType,
             "#{type} is not a valid item type."
     end
+    item_class
+  end
 
-    table = Terminal::Table.new(title: @title, style: { width: 80 })
+  def filter(type)
+    item_class = get_item_class(type)
 
-    @items.select { |item| item.class == item_class }.each_with_index do |item, position|
-      row = [position + 1, item.item_type, item.details[0], item.details[1]]
-      table.add_row row
+    filtered_items = @items.select { |item| item.class == item_class }
+
+    if filtered_items.length > 0
+      table = generate_table(filtered_items)
+
+      output = table
+
+    else
+      output =
+      "Can't generate list as there are no '#{type}' items in the list."
     end
 
-    puts table
+    puts output
   end
 end
