@@ -11,4 +11,8 @@ class LinkItem
   def details
     [format_description(@description), 'site name: ' + format_name(@site_name)]
   end
+
+  def item_type
+    'Link'
+  end
 end

@@ -45,7 +45,7 @@ class UdaciList
     table = Terminal::Table.new(title: @title, style: { width: 80 })
 
     @items.each_with_index do |item, position|
-      row = [position + 1, item.details[0], item.details[1]]
+      row = [position + 1, item.item_type, item.details[0], item.details[1]]
       table.add_row row
     end
 
@@ -68,7 +68,7 @@ class UdaciList
     table = Terminal::Table.new(title: @title, style: { width: 80 })
 
     @items.select { |item| item.class == item_class }.each_with_index do |item, position|
-      row = [position + 1, item.details[0], item.details[1]]
+      row = [position + 1, item.item_type, item.details[0], item.details[1]]
       table.add_row row
     end
 
