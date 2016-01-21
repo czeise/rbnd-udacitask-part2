@@ -10,8 +10,9 @@ class EventItem
   end
 
   def details
-    [format_description(@description), 'event dates: ' +
-      format_date(first_date: @start_date, second_date: @end_date)]
+    # Dropping 'event dates: ' from description to shorten column width
+    [format_description(@description),
+     format_date(first_date: @start_date, second_date: @end_date)]
   end
 
   def item_type

@@ -41,11 +41,24 @@ class UdaciList
     end
   end
 
+  def format_complete(item)
+    if item.class == TodoItem
+      if item.completed_status
+        '[X]'
+      else
+        '[ ]'
+      end
+    else
+      ' '
+    end
+  end
+
   def generate_table(list)
     table = Terminal::Table.new(title: @title, style: { width: 80 })
 
     list.each_with_index do |item, position|
-      row = [position + 1, item.item_type, item.details[0], item.details[1]]
+      checkbox = format_complete(item)
+      row = [position + 1, item.item_type, checkbox, item.details[0], item.details[1]]
       table.add_row row
     end
 
@@ -87,5 +100,14 @@ class UdaciList
     end
 
     puts output
+  end
+
+  def mark_complete(index)
+    if (@items[index - 1].class == TodoItem) &&
+       !@items[index - 1].completed_status
+      @items[index - 1].completed_status = true
+    else
+      puts 'Only incomplete to-do items can be marked complete.'
+    end
   end
 end

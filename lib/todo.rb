@@ -4,10 +4,12 @@ require_relative 'errors'
 class TodoItem
   include Listable
   attr_reader :description, :due, :priority
+  attr_accessor :completed_status
 
   def initialize(description, options = {})
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
+    @completed_status = false
 
     return unless options[:priority]
 
@@ -19,9 +21,9 @@ class TodoItem
   end
 
   def details
-    [format_description(@description), 'due: ' +
-      format_date(first_date: @due) +
-      format_priority(@priority)]
+    # Dropping 'due: ' from description to shorten column width
+    [format_description(@description),
+     format_date(first_date: @due) + format_priority(@priority)]
   end
 
   def item_type

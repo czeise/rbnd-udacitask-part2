@@ -9,7 +9,8 @@ class LinkItem
   end
 
   def details
-    [format_description(@description), 'site name: ' + format_name(@site_name)]
+    # Dropping 'site name: ' from description to shorten column width.
+    [format_description(@description), format_name(@site_name)]
   end
 
   def item_type
