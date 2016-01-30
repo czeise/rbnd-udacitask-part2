@@ -56,5 +56,9 @@ list.mark_complete(2)
 # that this can't be done!
 list.mark_complete(4)
 
+# Attempt to mark a completed to-do item as completed. Should receive an error
+# message that this can't be done.
+list.mark_complete(2)
+
 # Output list to verify that item #2 was marked complete
 list.all

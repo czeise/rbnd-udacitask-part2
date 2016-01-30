@@ -29,42 +29,6 @@ class UdaciList
     @items.delete_at(index - 1)
   end
 
-  def title_block
-    if @title
-      puts '-' * @title.length
-      puts @title
-      puts '-' * @title.length
-    else
-      puts '-' * 15
-      puts
-      puts '-' * 15
-    end
-  end
-
-  def format_complete(item)
-    if item.class == TodoItem
-      if item.completed_status
-        '[X]'
-      else
-        '[ ]'
-      end
-    else
-      ' '
-    end
-  end
-
-  def generate_table(list)
-    table = Terminal::Table.new(title: @title, style: { width: 80 })
-
-    list.each_with_index do |item, position|
-      checkbox = format_complete(item)
-      row = [position + 1, item.item_type, checkbox, item.details[0], item.details[1]]
-      table.add_row row
-    end
-
-    table
-  end
-
   def all
     puts generate_table(@items)
   end
@@ -110,5 +74,31 @@ class UdaciList
       # Note that I chose not to throw an error here.
       puts 'Only incomplete to-do items can be marked complete.'
     end
+  end
+
+  private
+
+  def format_complete(item)
+    if item.class == TodoItem
+      if item.completed_status
+        '[X]'
+      else
+        '[ ]'
+      end
+    else
+      ' '
+    end
+  end
+
+  def generate_table(list)
+    table = Terminal::Table.new(title: @title, style: { width: 80 })
+
+    list.each_with_index do |item, position|
+      checkbox = format_complete(item)
+      row = [position + 1, item.item_type, checkbox, item.details[0], item.details[1]]
+      table.add_row row
+    end
+
+    table
   end
 end
