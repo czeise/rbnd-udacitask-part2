@@ -33,21 +33,6 @@ class UdaciList
     puts generate_table(@items)
   end
 
-  def get_item_class(type)
-    type = type.downcase
-    if type == 'todo'
-      item_class = TodoItem
-    elsif type == 'event'
-      item_class = EventItem
-    elsif type == 'link'
-      item_class = LinkItem
-    else
-      raise UdaciListErrors::InvalidItemType,
-            "#{type} is not a valid item type."
-    end
-    item_class
-  end
-
   def filter(type)
     item_class = get_item_class(type)
 
@@ -100,5 +85,20 @@ class UdaciList
     end
 
     table
+  end
+
+  def get_item_class(type)
+    type = type.downcase
+    if type == 'todo'
+      item_class = TodoItem
+    elsif type == 'event'
+      item_class = EventItem
+    elsif type == 'link'
+      item_class = LinkItem
+    else
+      raise UdaciListErrors::InvalidItemType,
+            "#{type} is not a valid item type."
+    end
+    item_class
   end
 end
