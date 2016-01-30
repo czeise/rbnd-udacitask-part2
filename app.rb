@@ -46,3 +46,15 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter('event')
+
+# DEMO NEW FEATURE #1: ADD ABILITY TO MARK TO-DO ITEMS AS COMPLETE
+# ----------------------------------------------------------------
+# Mark a to-do item as completed
+list.mark_complete(2)
+
+# Attempt to mark a different item type as completed. Should receive a message
+# that this can't be done!
+list.mark_complete(4)
+
+# Output list to verify that item #2 was marked complete
+list.all

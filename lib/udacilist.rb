@@ -107,6 +107,7 @@ class UdaciList
        !@items[index - 1].completed_status
       @items[index - 1].completed_status = true
     else
+      # Note that I chose not to throw an error here.
       puts 'Only incomplete to-do items can be marked complete.'
     end
   end
