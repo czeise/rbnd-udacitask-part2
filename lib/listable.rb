@@ -1,4 +1,5 @@
-# Listable module
+# Defines the listable functionality for use by items that can be added to an
+# Udacilist
 module Listable
   # Listable methods go here
   def format_description(description)

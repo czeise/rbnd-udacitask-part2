@@ -1,10 +1,19 @@
-# UdaciList class
+# The main UdaciList class. All list functionality is defined here.
 class UdaciList
   attr_reader :title, :items
 
+  @@lists = []
+  @@untitled_list_num = 1
+
   def initialize(options = {})
-    options[:title] ? @title = options[:title] : @title = 'Untitled List'
+    if options[:title]
+      @title = options[:title]
+    else
+      @title = "Untitled List #{@@untitled_list_num}"
+      @@untitled_list_num += 1
+    end
     @items = []
+    add_to_lists
   end
 
   def add(type, description, options = {})
@@ -61,6 +70,15 @@ class UdaciList
     end
   end
 
+  def self.all
+    @@lists
+  end
+
+  def self.ui_mode
+    ui = UI.new
+    ui.main_menu(lists: all)
+  end
+
   private
 
   def format_complete(item)
@@ -100,5 +118,16 @@ class UdaciList
             "#{type} is not a valid item type."
     end
     item_class
+  end
+
+  def add_to_lists
+    @@lists.each do |list|
+      if list.title == @title
+        raise UdaciListErrors::DuplicateItemError,
+              "The list, #{@title}, already exists."
+      end
+    end
+
+    @@lists << self
   end
 end

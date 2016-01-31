@@ -1,4 +1,4 @@
-# EventItem class
+# This class defines events for use by UdaciList.
 class EventItem
   include Listable
   attr_reader :description, :start_date, :end_date

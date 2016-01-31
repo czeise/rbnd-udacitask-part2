@@ -1,4 +1,4 @@
-# LinkItem class
+# This class defines links for use by UdaciList.
 class LinkItem
   include Listable
   attr_reader :description, :site_name

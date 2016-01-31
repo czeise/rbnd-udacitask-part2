@@ -3,12 +3,14 @@ require 'colorize'
 # Find a third gem of your choice and add it to your project
 require 'terminal-table'
 require 'date'
+require 'highline'
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
+require_relative 'lib/ui'
 
 list = UdaciList.new(title: "Julia's Stuff")
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
@@ -62,3 +64,5 @@ list.mark_complete(2)
 
 # Output list to verify that item #2 was marked complete
 list.all
+
+UdaciList.ui_mode

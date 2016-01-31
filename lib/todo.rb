@@ -1,6 +1,6 @@
 require_relative 'errors'
 
-# TodoItem class
+# This class defines to-do's for use by UdaciList.
 class TodoItem
   include Listable
   attr_reader :description, :due, :priority
