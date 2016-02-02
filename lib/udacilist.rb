@@ -18,7 +18,7 @@ class UdaciList
 
   def add(type, description, options = {})
     type = type.downcase
-    if type == 'todo'
+    if %w(todo to-do).include?(type)
       @items.push TodoItem.new(description, options)
     elsif type == 'event'
       @items.push EventItem.new(description, options)
@@ -107,7 +107,7 @@ class UdaciList
 
   def get_item_class(type)
     type = type.downcase
-    if type == 'todo'
+    if %w(todo to-do).include?(type)
       item_class = TodoItem
     elsif type == 'event'
       item_class = EventItem
