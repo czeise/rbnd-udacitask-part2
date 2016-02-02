@@ -98,7 +98,8 @@ class UdaciList
 
     list.each_with_index do |item, position|
       checkbox = format_complete(item)
-      row = [position + 1, item.item_type, checkbox, item.details[0], item.details[1]]
+      row = [position + 1, item.item_type, checkbox, item.details[0],
+             item.details[1]]
       table.add_row row
     end
 

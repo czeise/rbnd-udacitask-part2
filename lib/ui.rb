@@ -154,7 +154,11 @@ class UI
 
   def create_list
     title = @cli.ask('Enter a title for your list.')
-    UdaciList.new(title: title)
+    if title.length > 0
+      UdaciList.new(title: title)
+    else
+      UdaciList.new
+    end
     main_menu
   end
 end
