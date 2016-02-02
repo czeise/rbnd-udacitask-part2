@@ -1,13 +1,27 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+I used the Terminal-Table gem to display the lists in a nicer format for the terminal. I also modified the format methods a bit to make sure everything would fit nicely in a standard terminal window.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+	a) Feature 1: The ability to mark to-do items as complete
+  		The mark_complete method checks to see if the item is a to-do item and if it has already been marked complete. It doesn't throw an error if the item can't be marked complete, but lets the user know with a message to the command line.
+  	b) Feature 2: Interactivity mode
+  		I tried to implement all of the functionality of UdaciList as an interactive program using the Highline gem. I put in some validation, but I didn't not handle the errors that were part of the normal program. These will kill program execution (intentionally).
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+	Overall it ended up being a couple weeks that I spent on this, but I had a bit of a break between staring and finishing the project. Looking back at my git logs, I implemented almost all of the standard requirements and my first new feature in the first couple of days, then when I got back to the project a week or so later, I put together the interactivity feature...which took a bit longer than I expected!
+
 2. What was the most rewarding challenge you conquered?
+	When I got started on implementing "interactivity mode", I didn't realize how much code would be required to really make that mode complete. As I got into it a bit, I realized it was kind of a big feature. Finishing that up was pretty rewarding.
+
 3. What two additional features did you build? Why?
+	a) Feature 1: The ability to mark to-do items as complete
+		This was a feature from the previous version of UdaciList. I feel it's important to not disappoint users of an updated product by removing functionality that was previously available. :)
+	b) Feature 2: Interactivity mode
+		OK, I'll admit, this one got to be a bit much. But once I got started, I knew I could complete it, so I just kept at it. I've never really played around with creating a command line program before, so I thought it'd be interesting. It ended up being a large enough feature that I'm sure I missed something along the way. Also, it was much different than anything else I've done so far, so I'm really looking for some feedback on better ways to have implemented this feature!
+
 4. Where do you still have room to grow?
+	I've been trying to spend a fair amount of time in the discussion forums and the slack channel talking through other student's issues with them. It's very important to me that I retain what I'm learning, so I've tried to make that a priority. But...it also made me realize that I need to make better us of my time on my priorities. I got a bit waylaid on this project by spending my shorter sessions not even working on the project, but helping other people with their projects. Time to increase my productivity!
